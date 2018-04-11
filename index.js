@@ -1,11 +1,11 @@
 /*
-    CoolBot Discord bot created by [YT] iCodeZz#5784
+    Zen Discord bot created by [YT] iCodeZz Community#5784
     This bot was entirely rewritten on Friday the 6th of April, 2018 (yeet)
     You can skid off some commands, but you cant fork the project.
 */
 const Discord = require("discord.js")
 const prefix = "]"
-const owner = "[YT] iCodeZz#5784"
+const owner = "[YT] iCodeZz Community#5784"
 const ytdl = require("ytdl-core")
 const Fortnite = require("fortnite")
 const stats = new Fortnite(process.env.TRN)
@@ -376,7 +376,7 @@ bot.on('message', async function(message) {
             var embed = new Discord.RichEmbed()
                 .setAuthor("Bisexual Rate")
                 .addField("Bixesual rate below :gay_pride_flag:", `You are ${gayrate[Math.floor(Math.random() * gayrate.length)]}% bisexual.`)
-                .setFooter("Created by srsklrboii#5784")
+                .setFooter(`Credits: created by ${owner}`)
                 .setColor("RANDOM")
             message.channel.send(embed).catch(e => {
                 message.channel.send("Woops! Looks like I can't send embeds to the chat! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH")
@@ -386,7 +386,7 @@ bot.on('message', async function(message) {
         var bisexualembed = new Discord.RichEmbed()
             .setAuthor("Bisexual Rate")
             .addField("Bisexual rate below :gay_pride_flag:", `${bisexualmember.username} is ${gayrate[Math.floor(Math.random() * gayrate.length)]}% bisexual.`)
-            .setFooter("Created by srsklrboii#5784")
+            .setFooter(`Credits: created by ${owner}`)
             .setColor("RANDOM")
         message.channel.send(bisexualembed).catch(e => {
             message.channel.send("Woops! Looks like I can't send embeds to the chat! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH") 
