@@ -199,7 +199,6 @@ bot.on('message', async function(message) {
             .addField("Bot Commands", "]botinfo, ]invite, ]credits")
             .addBlankField()
             .addField("Please join our Discord server! It really helps us grow!", "https://discord.gg/9JTSAvH")
-            .addField("Please consider upvoting our bot at Discord Bots, it well and truly helps us grow!", "https://discordbots.org/bot/416496004699783190?")
             .setFooter(`Credits: created by ${owner}`)
 	    .setColor("RANDOM")
         message.author.send(embed).catch(e => {
