@@ -171,8 +171,7 @@ var rpswinlose = [
 var bot = new Discord.Client;
 
 bot.on('ready', () => {
-    console.log("CoolBot is up and running!")
-    bot.user.setActivity("online")
+    console.log("CoolBot is up and running!"),
     bot.user.setActivity('for ]help', { type: 'WATCHING' })
 });
 
