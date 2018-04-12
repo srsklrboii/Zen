@@ -650,7 +650,7 @@ bot.on('message', async function(message) {
 	break;
 
         case "invite":
-        message.channel.send("Thank you for taking the time to invite me to your Discord server! The link is below:\nhttps://discordapp.com/api/oauth2/authorize?client_id=416496004699783190&permissions=8&scope=bot")
+        message.channel.send("Thank you for taking the time to invite me to your Discord server! The link is below:\nhttps://discordapp.com/api/oauth2/authorize?client_id=433492902900137984&permissions=8&scope=bot")
         break;
 
         case "credits":
