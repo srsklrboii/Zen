@@ -7,8 +7,6 @@ const Discord = require("discord.js")
 const prefix = "]"
 const owner = "[YT] iCodeZz Community#5784"
 const ytdl = require("ytdl-core")
-const Fortnite = require("fortnite")
-const stats = new Fortnite(process.env.fortniteapi)
 const encode = require("strict-uri-encode")
 const superagent = require("superagent")
 //const token = "token here" (if you wanna local host the bot)
@@ -193,7 +191,7 @@ bot.on('message', async function(message) {
             .addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
             .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog")
             .addField("Fun Music Commands", "]nootnoot, ]imgay")
-            .addField("Search Commands", "]search <search query here>, ]fortnite <pc/xb1/ps4> <player name>")
+            .addField("Search Commands", "]search <search query here>")
             .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
             .addField("Bot Commands", "]botinfo, ]invite, ]credits")
             .addBlankField()
@@ -512,36 +510,6 @@ bot.on('message', async function(message) {
 			message.channel.send("Woops! Looks like I can't send links in here!")
 		})
 	    break;
-
-        case "fortnite":
-		let platform
-		let username
-		if (!['pc','xb1','ps4'].includes(args[1])) return message.channel.send("You need to specify a platform for Fortnite.")
-		if (!args[2]) return message.channel.send("You have to specify a valid username of a Fortnite player.")
-		platform = args[1]
-		username = args[2]
-		stats.getInfo(username, platform).then(data => {
-			var embed = new Discord.RichEmbed()
-				.setAuthor(`Stats for ${data.username}`)
-				.addField("Top Placement", `Top 3's: ${data.lifetimeStats[0].value}\nTop 5's: ${data.lifetimeStats[1].value}\nTop 6's: ${data.lifetimeStats[3].value}\nTop 12's: ${data.lifetimeStats[4].value}\nTop 25's: ${data.lifetimeStats[5].value}`, true)
-				.addField("Total Score", data.lifetimeStats[6].value, true)
-				.addField("Matches Played", data.lifetimeStats[7].value, true)
-				.addField("Wins", data.lifetimeStats[8].value, true)
-				.addField("Win Percentage", data.lifetimeStats[9].value, true)
-				.addField("Kills", data.lifetimeStats[10].value, true)
-				.addField("K/D Ratio", data.lifetimeStats[11].value, true)
-				.addField("Kills Per Minute", data.lifetimeStats[12].value, true)
-				.addField("Time Played", data.lifetimeStats[13].value, true)
-				.addField("Average Survival Time", data.lifetimeStats[14].value, true)
-				.setFooter(`Credits: created by ${owner}`)
-				.setColor("RANDOM")
-			message.channel.send(embed).catch(e => {
-				message.channel.send("Woops! Looks like I can't send embeds to the chat! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH")
-			})
-		}).catch(e => {
-			message.channel.send("The player wasn't found!")
-		})
-        break;
 		    
 	case "dog":
 		let {body} = await superagent
