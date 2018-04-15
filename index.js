@@ -189,7 +189,7 @@ bot.on('message', async function(message) {
             .addField("8ball Commands", "]8ball <question here>")
             .addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
             .addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
-            .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog")
+            .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
             .addField("Fun Music Commands", "]nootnoot, ]imgay")
             .addField("Search Commands", "]search <search query here>")
             .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
@@ -522,6 +522,12 @@ bot.on('message', async function(message) {
 		message.channel.send(embed).catch(e => {
 			message.channel.send("Woops! Looks like I can't send embeds to the chat! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH")
 		})
+	break;
+		    
+	case "bean":
+	var beanmember = message.mentions.users.first()
+	if (!beanmember) return message.channel.send("There is no one mentioned for you to bean!")
+	message.channel.send(`${message.author}, you just beaned ${beanmember.username}!`)
 	break;
         
         case "kick":
