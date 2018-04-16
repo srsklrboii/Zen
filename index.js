@@ -1,7 +1,7 @@
 /*
     Zen Discord bot created by [YT] iCodeZz Community#5784
-    This bot was entirely rewritten on Friday the 6th of April, 2018 (yeet)
-    You can skid off some commands, but you cant fork the project.
+    This bot was entirely rewritten on Friday the 6th of April, 2018
+    Don't fork or skid any of the commands, or you will be exposed.
 */
 const Discord = require("discord.js")
 const prefix = "]"
@@ -9,7 +9,6 @@ const owner = "[YT] iCodeZz Community#5784"
 const ytdl = require("ytdl-core")
 const encode = require("strict-uri-encode")
 const superagent = require("superagent")
-//const token = "token here" (if you wanna local host the bot)
 
 var ball = [
     "Yes.",
@@ -527,7 +526,7 @@ bot.on('message', async function(message) {
 	case "bean":
 	var beanmember = message.mentions.users.first()
 	if (!beanmember) return message.channel.send("There is no one mentioned for you to bean!")
-	message.channel.send(`${message.author}, you just beaned ${beanmember.username}!`)
+	message.channel.send(`${message.author}, you just beaned **${beanmember.username}**!`)
 	break;
         
         case "kick":
@@ -579,7 +578,7 @@ bot.on('message', async function(message) {
         if(tomute.hasPermission("MUTE_MEMBERS")) return message.reply("I cannot mute this member since he/she is a mod/admin!");
         let muterole = message.guild.roles.find(`name`, "Muted");
         if(!muterole){
-            try{
+            try {
                 muterole = await message.guild.createRole({
                 name: "Muted",
                 color: "#000000",
@@ -632,4 +631,3 @@ bot.on('message', async function(message) {
     }
 })
 bot.login(process.env.TOKEN)
-//bot.login(token) (if u wanna local host the bot)
