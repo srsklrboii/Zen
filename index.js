@@ -628,7 +628,7 @@ bot.on('message', async function(message) {
 		   
 	case "feedback":
 	if (!args[1]) return message.channel.send("You need to give the feedback, not just leave it empty you know.")
-	feedbackwebhook.send(`**${message.author.name}** (**${message.author.id}**) from **${message.guild.name}** has sent some feedback!\nThe feedback: ${args.join(" ").slice(9)}`)
+	feedbackwebhook.send(`**${message.author.username}+${message.author.discriminator}** (**${message.author.id}**) from **${message.guild.name}** has sent some feedback!\nThe feedback: ${args.join(" ").slice(9)}`)
 	message.channel.send(`Your feedback has been sent, and will be acknowledged by the owner of me (${owner})! Remember, if you spam this command, you will be blacklisted from using this command.`)
 	break;
 
