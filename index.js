@@ -166,6 +166,7 @@ var rpswinlose = [
 ]
 
 var bot = new Discord.Client;
+var feedbackwebhook = new Discord.WebhookClient(feedbackapiid, feedbackapitoken)
 
 bot.on('ready', () => {
     console.log("CoolBot is up and running!"),
@@ -624,6 +625,11 @@ bot.on('message', async function(message) {
         case "invite":
         message.channel.send("Thank you for taking the time to invite me to your Discord server! The link is below:\nhttps://discordapp.com/api/oauth2/authorize?client_id=433492902900137984&permissions=8&scope=bot")
         break;
+		   
+	case "feedback":
+	if (!args[1]) return message.channel.send("You need to give the feedback, not just leave it empty you know.")
+	feedbackwebhook.send(`${message.author} from ${message.guild.name} has sent some feedback!\nThe feedback: ${args.join(" ").slice(9)}`)
+	break;
 
         case "credits":
         message.channel.send(`I was created by ${owner}!`)
