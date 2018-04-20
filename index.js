@@ -193,7 +193,7 @@ bot.on('message', async function(message) {
             .addField("Fun Music Commands", "]nootnoot, ]imgay")
             .addField("Search Commands", "]search <search query here>")
             .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
-            .addField("Bot Commands", "]botinfo, ]invite, ]credits")
+            .addField("Bot Commands", "]botinfo, ]feedback <feedback here>, ]invite, ]credits")
             .addBlankField()
             .addField("Please join our Discord server! It really helps us grow!", "https://discord.gg/9JTSAvH")
             .setFooter(`Credits: created by ${owner}`)
@@ -628,7 +628,7 @@ bot.on('message', async function(message) {
 		   
 	case "feedback":
 	if (!args[1]) return message.channel.send("You need to give the feedback, not just leave it empty you know.")
-	feedbackwebhook.send(`**${message.author.username}+${message.author.discriminator}** (**${message.author.id}**) from **${message.guild.name}** has sent some feedback!\nThe feedback: ${args.join(" ").slice(9)}`)
+	feedbackwebhook.send(`**${message.author.username}#${message.author.discriminator}** (**${message.author.id}**) from **${message.guild.name}** has sent some feedback!\nThe feedback: ${args.join(" ").slice(9)}`)
 	message.channel.send(`Your feedback has been sent, and will be acknowledged by the owner of me (${owner})! Remember, if you spam this command, you will be blacklisted from using this command.`)
 	break;
 
