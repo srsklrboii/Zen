@@ -555,7 +555,7 @@ bot.on('message', async function(message) {
         if (!banreason) return message.reply("Please indicate a reason for the ban!")
         banmember.send(`You have been banned from ${message.guild} for the following reason: ${kickreason}.`)
         banmember.ban(banreason).catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-        message.reply(`${kickedmember} has been kicked by ${message.author.username} because: ${kickreason}`);
+        message.reply(`${banmember} has been kicked by ${message.author.username} because: ${banreason}`);
         break;
 
         case "]purge":
