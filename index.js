@@ -198,7 +198,7 @@ bot.on('message', async function(message) {
             .addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
             .addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
             .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
-	    .addField("Economy Commands", "]money, ]reward")
+	    .addField("Economy Commands", "]balance, ]reward")
             .addField("Fun Music Commands", "]nootnoot, ]imgay")
             .addField("Search Commands", "]search <search query here>")
             .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
@@ -480,11 +480,11 @@ bot.on('message', async function(message) {
         message.channel.send(rpswinlose[Math.floor(Math.random() * rpswinlose.length)])
         break;
 		    
-	case "balance":
+	case "]balance":
         message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
         break;
 
-        case "reward":
+        case "]reward":
         if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
             userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
             userData[message.author.id + message.guild.id].money += 500;
