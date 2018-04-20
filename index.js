@@ -166,7 +166,7 @@ var rpswinlose = [
 ]
 
 var bot = new Discord.Client;
-var feedbackwebhook = new Discord.WebhookClient(feedbackapiid, feedbackapitoken)
+var feedbackwebhook = new Discord.WebhookClient(process.env.feedbackapiid, process.env.feedbackapitoken)
 
 bot.on('ready', () => {
     console.log("CoolBot is up and running!"),
