@@ -9,7 +9,6 @@ const owner = "[YT] iCodeZz Community#5784"
 const ytdl = require("ytdl-core")
 const encode = require("strict-uri-encode")
 const superagent = require("superagent")
-const moment = require("moment")
 
 var ball = [
     "Yes.",
@@ -168,7 +167,6 @@ var rpswinlose = [
 
 var bot = new Discord.Client;
 var feedbackwebhook = new Discord.WebhookClient(process.env.feedbackapiid, process.env.feedbackapitoken)
-let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
 
 bot.on('ready', () => {
     console.log("CoolBot is up and running!"),
@@ -180,13 +178,6 @@ bot.on('message', async function(message) {
     if (!message.content.startsWith(prefix)) return;
     if (message.channel.type === "dm") return message.channel.send("Please execute this command in a server!")
     var args = message.content.substring(prefix.length).split(" ")
-    let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
-    if (!userData[message.author.id + message.guild.id]) userData[message.author.id + message.guild.id] = {}
-    if (!userData[message.author.id + message.guild.id].money) userData[message.author.id + message.guild.id].money = 1000;
-    if (!userData[message.author.id + message.guild.id].lastDaily) userData[message.author.id + message.guild.id].lastDaily = "Not Collected"
-    fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
-        if (err) console.error(err)
-    })
     switch (args[0].toLowerCase()) {
         case "]help":
 	message.channel.send(`Commands are in your DM's, ${message.author}!`)
@@ -198,7 +189,6 @@ bot.on('message', async function(message) {
             .addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
             .addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
             .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
-	    .addField("Economy Commands", "]balance, ]reward")
             .addField("Fun Music Commands", "]nootnoot, ]imgay")
             .addField("Search Commands", "]search <search query here>")
             .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
@@ -478,22 +468,6 @@ bot.on('message', async function(message) {
         if (!args[1]) return message.channel.send("You need to specify something to battle me with!")
         message.channel.send(`You chose **${args[1]}** while I chose **${rps[Math.floor(Math.random() * rps.length)]}**!`)
         message.channel.send(rpswinlose[Math.floor(Math.random() * rpswinlose.length)])
-        break;
-		    
-	case "]balance":
-        message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
-        break;
-
-        case "]reward":
-        if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
-            userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
-            userData[message.author.id + message.guild.id].money += 500;
-            message.channel.send("You just retrieved your daily amount of $500!")
-        }
-        else message.channel.send("You have already collected your reward! You can collect your next reward in " + moment().endOf('day').fromNow() + ".")
-        fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
-            if (err) console.error(err)
-        })
         break;
 
         case "]nootnoot":
