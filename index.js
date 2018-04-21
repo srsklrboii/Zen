@@ -553,7 +553,7 @@ bot.on('message', async function(message) {
         var banreason = message.content.substring(banreasondelete).split(" ");
         var banreason = banreason.join(" ");
         if (!banreason) return message.reply("Please indicate a reason for the ban!")
-        banmember.send(`You have been banned from ${message.guild} for the following reason: ${kickreason}.`)
+        banmember.send(`You have been banned from ${message.guild} for the following reason: ${banreason}.`)
         banmember.ban(banreason).catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${banmember} has been kicked by ${message.author.username} because: ${banreason}`);
         break;
