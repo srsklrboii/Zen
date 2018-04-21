@@ -167,6 +167,7 @@ var rpswinlose = [
 
 var bot = new Discord.Client;
 var feedbackwebhook = new Discord.WebhookClient(process.env.feedbackapiid, process.env.feedbackapitoken)
+let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
 
 bot.on('ready', () => {
     console.log("CoolBot is up and running!"),
@@ -178,6 +179,13 @@ bot.on('message', async function(message) {
     if (!message.content.startsWith(prefix)) return;
     if (message.channel.type === "dm") return message.channel.send("Please execute this command in a server!")
     var args = message.content.substring(prefix.length).split(" ")
+    let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
+    if (!userData[message.author.id + message.guild.id]) userData[message.author.id + message.guild.id] = {}
+    if (!userData[message.author.id + message.guild.id].money) userData[message.author.id + message.guild.id].money = 1000;
+    if (!userData[message.author.id + message.guild.id].lastDaily) userData[message.author.id + message.guild.id].lastDaily = "Not Collected"
+    fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+        if (err) console.error(err)
+    })
     switch (args[0].toLowerCase()) {
         case "]help":
 	message.channel.send(`Commands are in your DM's, ${message.author}!`)
@@ -528,6 +536,22 @@ bot.on('message', async function(message) {
 	if (!beanmember) return message.channel.send("There is no one mentioned for you to bean!")
 	message.channel.send(`${message.author}, you just beaned **${beanmember.username}**!`)
 	break;
+		    
+	case "balance":
+        message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
+        break;
+
+        case "reward":
+        if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
+            userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
+            userData[message.author.id + message.guild.id].money += 500;
+            message.channel.send("You just retrieved your daily amount of $500!")
+        }
+        else message.channel.send("You have already collected your reward! You can collect your next reward in " + moment().endOf('day').fromNow())
+        fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+            if (err) console.error(err)
+        })
+        break;
         
         case "]kick":
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You do not have the permission to do this!");
