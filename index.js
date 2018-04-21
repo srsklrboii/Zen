@@ -631,7 +631,7 @@ bot.on('message', async function(message) {
 	var clientserverembed = new Discord.RichEmbed()
 		.setAuthor("Feedback for Zen")
 		.setDescription(`Thanks for sending feedback! ${owner} really appreciates it!`)
-		.addField("Your feedback", args.join(" ").slice(8))
+		.addField("Your feedback", args.join(" ").slice(10))
 		.setFooter(`Credits: created by ${owner}`)
 		.setColor("RANDOM")
 	message.channel.send(clientserverembed)
