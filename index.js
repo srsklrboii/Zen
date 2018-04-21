@@ -537,11 +537,11 @@ bot.on('message', async function(message) {
 	message.channel.send(`${message.author}, you just beaned **${beanmember.username}**!`)
 	break;
 		    
-	case "balance":
+	case "]balance":
         message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
         break;
 
-        case "reward":
+        case "]reward":
         if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
             userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
             userData[message.author.id + message.guild.id].money += 500;
