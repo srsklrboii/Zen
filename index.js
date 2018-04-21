@@ -4,7 +4,7 @@
     Don't fork or skid any of the commands, or you will be exposed.
 */
 const Discord = require("discord.js")
-const prefix = ""
+const prefix = "]"
 const owner = "[YT] iCodeZz Community#5784"
 const ytdl = require("ytdl-core")
 const encode = require("strict-uri-encode")
@@ -188,7 +188,7 @@ bot.on('message', async function(message) {
         if (err) console.error(err)
     })
     switch (args[0].toLowerCase()) {
-        case "]help":
+        case "help":
 	message.channel.send(`Commands are in your DM's, ${message.author}!`)
         var embed = new Discord.RichEmbed()
             .setAuthor("Available Commands")
@@ -211,29 +211,29 @@ bot.on('message', async function(message) {
         })
 	break;
 
-        case "]ping":
+        case "ping":
         message.channel.send(`:ping_pong: Pong! It took ${bot.ping}ms to deliver this message!`)
         break;
 
-        case "]pong":
+        case "pong":
         message.channel.send("Ping?")
         break;
 
-        case "]cookie":
+        case "cookie":
         message.channel.send(":cookie:")
         break;
 
-        case "]say":
+        case "say":
         if (!args[1]) return message.channel.send("You need to specify a string of words after the command that you want me to say!")
         message.delete()
         message.channel.send(args.join(" ").slice(3))
         break;
 
-        case "]noticeme":
+        case "noticeme":
         message.channel.send(`${message.author} ${message.author} ${message.author} ${message.author} ${message.author} ${message.author} ${message.author} ${message.author} ${message.author} ${message.author}\nThere you just got noticed.`)
         break;
 
-        case "]userinfo":
+        case "userinfo":
         var userCreated = message.author.createdAt.toString().split(" ");
             var userinfotoget = message.mentions.users.first()
             if (!userinfotoget) {
@@ -263,7 +263,7 @@ bot.on('message', async function(message) {
             });
         break;
 
-        case "]serverinfo":
+        case "serverinfo":
         var serverCreated = message.guild.createdAt.toString().split(" ");
         var embed = new Discord.RichEmbed()
             .setAuthor("Info about this Discord Server:")
@@ -278,13 +278,13 @@ bot.on('message', async function(message) {
             });
         break;
 
-        case "]getavatar":
+        case "getavatar":
         var avatartoget = message.mentions.users.first()
         if (!avatartoget) return message.channel.send(`${message.author}, your avatar is here: ${message.author.displayAvatarURL}`)
         message.channel.send(`${message.author}, here is the avatar of ${avatartoget}: ${avatartoget.displayAvatarURL}`)
         break;
 
-        case "]8ball":
+        case "8ball":
         if (args[1]) {
             message.channel.send(ball[Math.floor(Math.random() * ball.length)]);
             return;
@@ -293,19 +293,19 @@ bot.on('message', async function(message) {
             return;
         }
         
-        case "]6sided":
+        case "6sided":
         message.channel.send("You rolled a **" + sixsided[Math.floor(Math.random() * sixsided.length)] + "**!");
         break;
 
-        case "]8sided":
+        case "8sided":
         message.channel.send("You rolled a **" + eightsided[Math.floor(Math.random() * eightsided.length)] + "**!");
         break;
 
-        case "]10sided":
+        case "10sided":
         message.channel.send("You rolled a **" + tensided[Math.floor(Math.random() * tensided.length)] + "**!");
         break;
 
-        case "]gayrate":
+        case "gayrate":
         var gaymember = message.mentions.users.first()
         if (!gaymember) {
             var embed = new Discord.RichEmbed()
@@ -328,7 +328,7 @@ bot.on('message', async function(message) {
         })
         break;
 
-        case "]lesbianrate":
+        case "lesbianrate":
         var lesbianmember = message.mentions.users.first()
         if (!lesbianmember) {
             var embed = new Discord.RichEmbed()
@@ -351,7 +351,7 @@ bot.on('message', async function(message) {
         })
         break;
 
-        case "]straightrate":
+        case "straightrate":
         var straightmember = message.mentions.users.first()
         if (!straightmember) {
             var embed = new Discord.RichEmbed()
@@ -374,7 +374,7 @@ bot.on('message', async function(message) {
         })
         break;
 
-        case "]bisexualrate":
+        case "bisexualrate":
         var bisexualmember = message.mentions.users.first()
         if (!bisexualmember) {
             var embed = new Discord.RichEmbed()
@@ -397,7 +397,7 @@ bot.on('message', async function(message) {
         })
         break;
 
-        case "]dankrate":
+        case "dankrate":
         var dankmember = message.mentions.users.first()
         if (!dankmember) {
             var embed = new Discord.RichEmbed()
@@ -420,7 +420,7 @@ bot.on('message', async function(message) {
         })
         break;
 
-        case "]waifurate":
+        case "waifurate":
         var waifumember = message.mentions.users.first()
         if (!waifumember) {
             var embed = new Discord.RichEmbed()
@@ -443,43 +443,43 @@ bot.on('message', async function(message) {
         })
         break;
 
-        case "]punch":
+        case "punch":
         var punchmember = message.mentions.users.first()
         if (!punchmember) return message.channel.send("You need to mention a person you want to punch!")
         message.channel.send(`${message.author}, you just punched **${punchmember.username}**! :punch: :scream:`)
         break;
 
-        case "]stab":
+        case "stab":
         var stabmember = message.mentions.users.first()
         if (!stabmember) return message.channel.send("You need to mention a person you want to stab!")
         message.channel.send(`${message.author}, you just stabbed **${stabmember.username}**! :knife: :dagger: :scream:`)
         break;
 
-        case "]shoot":
+        case "shoot":
         var shootmember = message.mentions.users.first()
         if (!shootmember) return message.channel.send("You need to mention a person you want to shoot!")
         message.channel.send(`${message.author}, you just shot **${shootmember.username}**! :gun: :scream:`)
         break;
 
-        case "]bomb":
+        case "bomb":
         var bombmember = message.mentions.users.first()
         if (!bombmember) return message.channel.send("You need to mention a person you want to bomb!")
         message.channel.send(`${message.author}, you just bombed **${bombmember.username}**! :bomb: :scream:`)
         break;
 
-        case "]annihilate":
+        case "annihilate":
         var annihilatemember = message.mentions.users.first()
         if (!annihilatemember) return message.channel.send("You need to mention someone you want to annihilate!")
         message.channel.send(`${message.author}, you just annihilated **${annihilatemember.username}**! :gun: :knife: :dagger: :punch: :bomb: :scream:`)
         break;
 
-        case "]rps":
+        case "rps":
         if (!args[1]) return message.channel.send("You need to specify something to battle me with!")
         message.channel.send(`You chose **${args[1]}** while I chose **${rps[Math.floor(Math.random() * rps.length)]}**!`)
         message.channel.send(rpswinlose[Math.floor(Math.random() * rpswinlose.length)])
         break;
 
-        case "]nootnoot":
+        case "nootnoot":
         var voiceChannel = message.member.voiceChannel
         if (!voiceChannel) return message.channel.send("You are not in a voice channel!")
         if (!voiceChannel.joinable) return message.channel.send("I cannot join that voice channel!")
@@ -495,7 +495,7 @@ bot.on('message', async function(message) {
         dispatcher.setVolumeLogarithmic(5 / 5)
         break;
             
-        case "]imgay":
+        case "imgay":
         var voiceChannel = message.member.voiceChannel
         if (!voiceChannel) return message.channel.send("You are not in a voice channel!")
         if (!voiceChannel.joinable) return message.channel.send("I cannot join that voice channel!")
@@ -511,7 +511,7 @@ bot.on('message', async function(message) {
         dispatcher.setVolumeLogarithmic(5 / 5)
         break;
 
-        case "]search":
+        case "search":
 		let question = encode(args.join(" ").slice(7))
 		let link = `https://www.lmgtfy.com/&q=${question}`
 		message.channel.send(link).catch(e => {
@@ -519,7 +519,7 @@ bot.on('message', async function(message) {
 		})
 	    break;
 		    
-	case "]dog":
+	case "dog":
 		let {body} = await superagent
 		.get(`http://random.dog/woof.json`);
 		var embed = new Discord.RichEmbed()
@@ -532,17 +532,17 @@ bot.on('message', async function(message) {
 		})
 	break;
 		    
-	case "]bean":
+	case "bean":
 	var beanmember = message.mentions.users.first()
 	if (!beanmember) return message.channel.send("There is no one mentioned for you to bean!")
 	message.channel.send(`${message.author}, you just beaned **${beanmember.username}**!`)
 	break;
 		    
-	case "]balance":
+	case "balance":
         message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
         break;
 
-        case "]reward":
+        case "reward":
         if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
             userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
             userData[message.author.id + message.guild.id].money += 500;
@@ -554,7 +554,7 @@ bot.on('message', async function(message) {
         })
         break;
         
-        case "]kick":
+        case "kick":
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You do not have the permission to do this!");
         var kickedmember = message.mentions.members.first()
         if (!kickedmember) return message.reply("Please mention a valid member of this server!")
@@ -569,7 +569,7 @@ bot.on('message', async function(message) {
         message.reply(`${kickedmember.user.username} has been kicked by ${message.author.username} because: ${kickreason}`);
         break;
 
-        case "]ban":
+        case "ban":
         if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("You do not have the permission to do this!");
         var banmember = message.mentions.members.first()
         if (!banmember) return message.reply("Please mention a valid member of this server!")
@@ -583,7 +583,7 @@ bot.on('message', async function(message) {
         message.reply(`${banmember} has been kicked by ${message.author.username} because: ${banreason}`);
         break;
 
-        case "]purge":
+        case "purge":
         if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have the permission to do this!")
             if (!args[1]) return message.channel.send("Please specify a number!")
             if (args[1] >= 100) return message.channel.send("Please specify a number between 1 and 100!")
@@ -596,7 +596,7 @@ bot.on('message', async function(message) {
             message.channel.send(`Purged **${args[1]}** messages!`)
         break;
 
-        case "]mute":
+        case "mute":
         if (!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("You do not have the permission to do this!")
         let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!tomute) return message.reply("Please specify a valid user!");
@@ -623,7 +623,7 @@ bot.on('message', async function(message) {
         message.channel.send(`${tomute} has been successfully muted!`)
         break;
 
-        case "]unmute":
+        case "unmute":
         var unmuterole = message.guild.roles.find("name", "muted")
         if (!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("You do not have the permission to do this!")
         var tounmute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]))
@@ -632,7 +632,7 @@ bot.on('message', async function(message) {
         message.channel.send(`${tounmute} has been successfully unmuted!`)
         break;
 		    
-	case "]botinfo":
+	case "botinfo":
         var embed = new Discord.RichEmbed()
             .setAuthor("Info for me!")
             .addField("Name", bot.user.username)
@@ -646,11 +646,11 @@ bot.on('message', async function(message) {
         })
 	break;
 
-        case "]invite":
+        case "invite":
         message.channel.send("Thank you for taking the time to invite me to your Discord server! The link is below:\nhttps://discordapp.com/api/oauth2/authorize?client_id=433492902900137984&permissions=8&scope=bot")
         break;
 		   
-	case "]feedback":
+	case "feedback":
 	if (!args[1]) return message.channel.send("You need to give the feedback, not just leave it empty you know.")
 	var serverembed = new Discord.RichEmbed()
 		.setAuthor("New feedback!")
@@ -668,7 +668,7 @@ bot.on('message', async function(message) {
 	message.channel.send(clientserverembed)
 	break;
 
-        case "]credits":
+        case "credits":
         message.channel.send(`I was created by ${owner}!`)
         break;
     }
