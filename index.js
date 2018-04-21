@@ -537,22 +537,6 @@ bot.on('message', async function(message) {
 	if (!beanmember) return message.channel.send("There is no one mentioned for you to bean!")
 	message.channel.send(`${message.author}, you just beaned **${beanmember.username}**!`)
 	break;
-		    
-	case "balance":
-        message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
-        break;
-
-        case "reward":
-        if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
-            userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
-            userData[message.author.id + message.guild.id].money += 500;
-            message.channel.send("You just retrieved your daily amount of $500!")
-        }
-        else message.channel.send("You have already collected your reward! You can collect your next reward in " + moment().endOf('day').fromNow())
-        fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
-            if (err) console.error(err)
-        })
-        break;
         
         case "kick":
         if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You do not have the permission to do this!");
