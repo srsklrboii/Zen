@@ -629,7 +629,7 @@ bot.on('message', async function(message) {
 	if (!args[1]) return message.channel.send("You need to give the feedback, not just leave it empty you know.")
 	var serverembed = new Discord.RichEmbed()
 		.setAuthor("New feedback!")
-		.addField("Who is it from?", message.author.username + "#" + message.author.discriminator + "(" + message.author.id + ")")
+		.addField("Who is it from?", message.author.username + "#" + message.author.discriminator + " " + "(" + message.author.id + ")")
 		.addField("What is the feedback?", args.join(" ").slice(10))
 		.setFooter(`Credits: created by ${owner}`)
 		.setColor("RANDOM")
