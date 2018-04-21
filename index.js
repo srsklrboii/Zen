@@ -627,7 +627,13 @@ bot.on('message', async function(message) {
 		   
 	case "]feedback":
 	if (!args[1]) return message.channel.send("You need to give the feedback, not just leave it empty you know.")
-	feedbackwebhook.send(`**${message.author.username}#${message.author.discriminator}** (**${message.author.id}**) from **${message.guild.name}** has sent some feedback!\n\nThe feedback: ${args.join(" ").slice(9)}`)
+	var serverembed = new Discord.RichEmbed()
+		.setAuthor("New feedback!")
+		.addField("Who is it from?", message.author.username + "#" + message.author.discriminator + "(" + message.author.id + ")")
+		.addField("What is the feedback?", args.join(" ").slice(10))
+		.setFooter(`Credits: created by ${owner}`)
+		.setColor("RANDOM")
+	feedbackwebhook.send(serverembed)
 	var clientserverembed = new Discord.RichEmbed()
 		.setAuthor("Feedback for Zen")
 		.setDescription(`Thanks for sending feedback! ${owner} really appreciates it!`)
