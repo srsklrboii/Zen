@@ -10,6 +10,7 @@ const ytdl = require("ytdl-core")
 const encode = require("strict-uri-encode")
 const superagent = require("superagent")
 const fs = require("fs")
+const moment = require("moment")
 
 var ball = [
     "Yes.",
@@ -168,6 +169,7 @@ var rpswinlose = [
 
 var bot = new Discord.Client;
 var feedbackwebhook = new Discord.WebhookClient(process.env.feedbackapiid, process.env.feedbackapitoken)
+var serverData = JSON.parse(fs.ReadFileSync('Storage/userData.json', 'utf8'))
 let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
 
 bot.on('ready', () => {
@@ -180,6 +182,7 @@ bot.on('message', async function(message) {
     if (!message.content.startsWith(prefix)) return;
     if (message.channel.type === "dm") return message.channel.send("Please execute this command in a server!")
     var args = message.content.substring(prefix.length).split(" ")
+    var serverData = JSON.parse(fs.ReadFileSync('Storage/userData.json', 'utf8'))
     let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
     if (!userData[message.author.id + message.guild.id]) userData[message.author.id + message.guild.id] = {}
     if (!userData[message.author.id + message.guild.id].money) userData[message.author.id + message.guild.id].money = 1000;
@@ -531,6 +534,22 @@ bot.on('message', async function(message) {
 			message.channel.send("Woops! Looks like I can't send embeds to the chat! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH")
 		})
 	break;
+		    
+	case "balance":
+        message.channel.send(`You have $${userData[message.author.id + message.guild.id].money}!`)
+        break;
+
+        case "reward":
+        if (userData[message.author.id + message.guild.id].lastDaily != moment().format('L')) {
+            userData[message.author.id + message.guild.id].lastDaily = moment().format('L')
+            userData[message.author.id + message.guild.id].money += 500;
+            message.channel.send("You just retrieved your daily amount of $500!")
+        }
+        else message.channel.send("You have already collected your reward! You can collect your next reward in " + moment().endOf('day').fromNow())
+        fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+            if (err) console.error(err)
+        })
+        break;
 		    
 	case "bean":
 	var beanmember = message.mentions.users.first()
