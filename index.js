@@ -168,6 +168,7 @@ var rpswinlose = [
 
 var bot = new Discord.Client;
 var feedbackwebhook = new Discord.WebhookClient(process.env.feedbackapiid, process.env.feedbackapitoken)
+let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
 
 bot.on('ready', () => {
     console.log("CoolBot is up and running!"),
@@ -179,6 +180,13 @@ bot.on('message', async function(message) {
     if (!message.content.startsWith(prefix)) return;
     if (message.channel.type === "dm") return message.channel.send("Please execute this command in a server!")
     var args = message.content.substring(prefix.length).split(" ")
+    let userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'))
+    if (!userData[message.author.id + message.guild.id]) userData[message.author.id + message.guild.id] = {}
+    if (!userData[message.author.id + message.guild.id].money) userData[message.author.id + message.guild.id].money = 1000;
+    if (!userData[message.author.id + message.guild.id].lastDaily) userData[message.author.id + message.guild.id].lastDaily = "Not Collected"
+    fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+        if (err) console.error(err)
+    })
     switch (args[0].toLowerCase()) {
         case "help":
 	message.channel.send(`Commands are in your DM's, ${message.author}!`)
