@@ -189,6 +189,7 @@ bot.on('message', async function(message) {
             .addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
             .addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
             .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
+	    .addField("Music Commands", "]join, ]play <YouTube URL>, ]stop, ]leave")
             .addField("Fun Music Commands", "]nootnoot, ]imgay")
             .addField("Search Commands", "]search <search query here>")
             .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
@@ -468,6 +469,48 @@ bot.on('message', async function(message) {
         if (!args[1]) return message.channel.send("You need to specify something to battle me with!")
         message.channel.send(`You chose **${args[1]}** while I chose **${rps[Math.floor(Math.random() * rps.length)]}**!`)
         message.channel.send(rpswinlose[Math.floor(Math.random() * rpswinlose.length)])
+        break;
+		    
+	case "join":
+        const voiiceChannel = message.member.voiceChannel
+        if (!voiiceChannel) return message.channel.send("You are not in a voice channel!")
+        voiiceChannel.join()
+        message.channel.send("I have successfully joined the voice channel!")
+        break;
+
+        case "play":
+        const voiceChannel = message.member.voiceChannel
+        if (!voiceChannel) return message.channel.send("You are not in a voice channel!")
+        try {
+            var connection = await voiceChannel.join()
+        } catch (e) {
+            console.error(e)
+            message.channel.send("There was an error while trying to join the voice channel!")
+            return;
+        }
+        if (!args[1]) return message.channel.send("You need to specify a YouTube URL that you want to play through the voice channel!")
+        const dispatcher = connection.playStream(ytdl(args[1]))
+            .on('end', () => {
+                message.channel.send("The song has ended!")
+            })
+            .on('error', error => {
+                console.log(error)
+            })
+        dispatcher.setVolumeLogarithmic(5 / 5)
+        break;
+
+        case "stop":
+        const vooiceChannel = message.member.voiceChannel
+        if (!vooiceChannel) return message.channel.send("You are not in a voice channel!")
+        vooiceChannel.leave()
+        message.channel.send("I have successfully stopped the music being played in the voice channel!")
+        break;
+
+        case "leave":
+        const vvoiceChannel = message.member.voiceChannel
+        if (!vvoiceChannel) return message.channel.send("You are not in a voice channel!")
+        vvoiceChannel.leave()
+        message.channel.send("I have successfully left the voice channel!")
         break;
 
         case "nootnoot":
