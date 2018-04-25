@@ -470,35 +470,7 @@ bot.on('message', async function(message) {
         message.channel.send(`You chose **${args[1]}** while I chose **${rps[Math.floor(Math.random() * rps.length)]}**!`)
         message.channel.send(rpswinlose[Math.floor(Math.random() * rpswinlose.length)])
         break;
-
-        case "play":
-        const voiceChannel = message.member.voiceChannel
-        if (!voiceChannel) return message.channel.send("You are not in a voice channel!")
-        try {
-            var connection = await voiceChannel.join()
-        } catch {
-            message.channel.send("There was an error while trying to join the voice channel!")
-            return;
-        }
-        if (!args[1]) return message.channel.send("You need to specify a YouTube URL that you want to play through the voice channel!")
-        const dispatcher = connection.playStream(ytdl(args[1]))
-            .on('end', () => {
-                message.channel.send("The song has ended!")
-            })
-            .on('error', error => {
-                console.log(error)
-            })
-        dispatcher.setVolumeLogarithmic(5 / 5)
-	message.channel.send("Now playing: " + args[1])
-        break;
-
-        case "stop":
-        const vooiceChannel = message.member.voiceChannel
-        if (!vooiceChannel) return message.channel.send("You are not in a voice channel!")
-        vooiceChannel.leave()
-        message.channel.send("I have successfully stopped the music being played in the voice channel!")
-        break;
-
+	
         case "nootnoot":
         var voiceChannel = message.member.voiceChannel
         if (!voiceChannel) return message.channel.send("You are not in a voice channel!")
