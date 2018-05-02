@@ -189,7 +189,7 @@ bot.on('message', async function(message) {
             		.addField("8ball Commands", "]8ball <question here>")
             		.addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
             		.addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
-            		.addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
+            		.addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
             		.addField("Fun Music Commands", "]nootnoot, ]imgay")
             		.addField("Search Commands", "]search <search query here>")
             		.addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
@@ -204,7 +204,138 @@ bot.on('message', async function(message) {
 		return;
 	}
 	if ("ping".includes(args[1])) {
-		message.channel.send("Command Name: ]ping\nUsage: ]ping\nReturns: a really specific ping.")
+		message.channel.send("Command Name: ping\nUsage: ]ping\nReturn: a really specific ping.")
+		return;
+	}
+	if ("pong".includes(args[1])) {
+		message.channel.send("Command Name: pong\nUsage: ]pong\nReturn: what would you expect?")
+	}
+	if ("cookie".includes(args[1])) {
+	    message.channel.send("Command name: cookie\nUsage: ]cookie\nReturn: a cookie.")
+	    return;
+	}
+	if ("say".includes(args[1])) {
+		message.channel.send("Command name: say\nUsage: ]say <put anything here>\nReturn: the bot will repeat what you put after the \say command, and delete your original message.")
+		return;
+	}
+	if ("noticeme".includes(args[1])) {
+		message.channel.send("Command name: noticeme\nUsage: ]noticeme\nReturn: the bot will ping you 10 times.")
+		return;
+	}
+	if ("userinfo".includes(args[1])) {
+		message.channel.send("Command name: userinfo\nUsage: ]userinfo <optional user mention>\nReturn: gives you the userinfo of you if no one is mentioned, and the person you mentioned, if anyone was mentioned.")
+		return;
+	}
+	if ("serverinfo".includes(args[1])) {
+		message.channel.send("Command name: serverinfo\nUsage: ]serverinfo\nReturn: the server information.")
+		return;
+	}
+	if ("getavatar".includes(args[1])) {
+		message.channel.send("Command name: getavatar\nUsage: ]getavatar <optional user mention>\nReturn: gets the avatar of you and/or anyone you mention.")
+		return;
+	}
+	if ("8ball".includes(args[1])) {
+		message.channel.send("Command name: 8ball\nUsage: ]8ball <question here>\nReturn: an answer for your question")
+		return;
+	}
+	if ("6sided".includes(args[1])) {
+		message.channel.send("Command name: 6sided\nUsage: ]6sided\nReturn: rolls a six sided dice and returns the number.")
+		return;
+	}
+	if ("8sided".includes(args[1])) {
+		message.channel.send("Command name: 8sided\nUsage: ]8sided\nReturn: rolls an eight sided dice and returns the number.")
+		return;
+	}
+	if ("10sided".includes(args[1])) {
+		message.channel.send("Command name: 10sided\nUsage: ]10sided\nReturn: rolls a 10 sided dice and returns the number.")
+		return;
+	}
+	if ("gayrate".includes(args[1])) {
+		message.channel.send("Command name: gayrate\nUsage: ]gayrate <optional user mention\nReturn: it will rate your/their gayness randomly.")
+		return;
+	}
+	if ("lesbianrate".includes(args[1])) {
+		message.channel.send("Command name: lesbianrate\nUsage: ]lesbianrate <optional user mention\nReturn: it will rate your/their lesbianness randomly.")
+		return;
+	}
+	if ("straightrate".includes(args[1])) {
+		message.channel.send("Command name: straightrate\nUsage: ]straightrate <optional user mention>\nReturn: it will rate your/their straightness randomly.")
+		return;
+	}
+	if ("dankrate".includes(args[1])) {
+		message.channel.send("Command name: dankrate\nUsage: ]dankrate <optional user mention>\nReturn: it will rate your/their dankness randomly.")
+		return;
+	}
+	if ("waifurate".includes(args[1])) {
+		message.channel.send("Command name: waifurate\nUsage: ]waifurate <optional user>\nReturn: it will rate your/their waifuness randomly.")
+		return;
+	}
+	if ("punch".includes(args[1])) {
+		message.channel.send("Command name: punch\nUsage: ]punch <user mention>\nReturn: will virtually punch the mentioned user.")
+		return;
+	}
+	if ("stab".includes(args[1])) {
+		message.channel.send("Command name: stab\nUsage: ]stab <user mention>\nReturn: will virtually stab the mentioned user.")
+		return;
+	}
+	if ("shoot".includes(args[1])) {
+		message.channel.send("Command name: shoot\nUsage: ]shoot <user mention>\nReturn: will virtually shoot the mentioned user.")
+		return;
+	}
+	if ("bomb".includes(args[1])) {
+		message.channel.send("Command name: bomb\nUsage: ]bomb <user mention>\nReturn: will virtually bomb the mentioned user.")
+		return;
+	}
+	if ("annihilate".includes(args[1])) {
+		message.channel.send("Command name: annihilate\nUsage: ]annihilate <user mention>\nReturn: will virtually annihilate the mentioned user.")
+		return;
+	}
+	if ("rps".includes(args[1])) {
+		message.channel.send("Command name: rps\nUsage: ]rps <whatever you choose>\nReturn: the bot will compete in rock paper scissors with you.")
+		return;
+	}
+	if ("dog".includes(args[1])) {
+		message.channel.send("Command name: dog\nUsage: ]dog\nReturn: will send an image of a dog to the chat.")
+		return;
+	}
+	if ("bean".includes(args[1])) {
+		message.channel.send("Command name: bean\nUsage: ]bean <user mention>\nReturn: will virtually bean the mentioned user.")
+		return;
+	}
+	if ("nootnoot".includes(args[1])) {
+		message.channel.send("Command name: nootnoot\nUsage: ]nootnoot\nReturn: plays the famous 'NOOT NOOT' by Pingu in the voice chat you're in.")
+		return;
+	}
+	if ("imgay".includes(args[1])) {
+		message.channel.send("Command name: imgay\nUsage: ]imgay <user mention>\nReturn: plays the famous 'i'm gay' by iDubZz in the voice chat you're in.")
+		return;
+	}
+	if ("search".includes(args[1])) {
+		message.channel.send("Command name: search\nUsage: ]search <query here>\nReturn: returns an LMGTFY link for the search query.")
+		return;
+	}
+	if ("kick".includes(args[1])) {
+		message.channel.send("Command name: kick\nUsage: ]kick <user mention> <reason>\nReturn: kicks the mentioned user for the reason specified.")
+		return;
+	}
+	if ("ban".includes(args[1])) {
+		message.channel.send("Command name: ban\nUsage: ]ban <user mention>\nReturn: bans the mentioned user for the reason specified.")
+		return;
+	}
+	if ("purge".includes(args[1])) {
+		message.channel.send("Command name: purge\nUsage: ]purge <number between 1 and 100>\nReturn: purges the amount of messages specified.")
+		return;
+	}
+	if ("mute".includes(args[1])) {
+		message.channel.send("Command name: mute\nUsage: ]mute <user mention>\nReturn: mutes the mentioned user.")
+		return;
+	}
+	if ("unmute".includes(args[1])) {
+		message.channel.send("Command name: unmute\nUsage: ]unmute <user mention>\nReturn: unmutes the person mentioned.")
+		return;
+	}
+	if ("feedback".includes(args[1])) {
+		message.channel.send("Command name: feedback\nUsage: ]feedback <feedback here>\nReturn: sends feedback about the bot to the developers of the bot.")
 		return;
 	}
 	break;
