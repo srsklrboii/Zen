@@ -205,7 +205,6 @@ bot.on('message', async function(message) {
 	}
 	if ("ping".includes(args[1])) {
 		message.channel.send("Command Name: ping\nUsage: ]ping\nReturn: a really specific ping.")
-		return;
 	}
 	if ("pong".includes(args[1])) {
 		message.channel.send("Command Name: pong\nUsage: ]pong\nReturn: what would you expect?")
