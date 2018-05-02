@@ -205,6 +205,7 @@ bot.on('message', async function(message) {
 	}
 	if ("ping".includes(args[1])) {
 		message.channel.send("Command Name: ping\nUsage: ]ping\nReturn: a really specific ping.")
+		return;
 	}
 	if ("pong".includes(args[1])) {
 		message.channel.send("Command Name: pong\nUsage: ]pong\nReturn: what would you expect?")
@@ -338,6 +339,7 @@ bot.on('message', async function(message) {
 		message.channel.send("Command name: feedback\nUsage: ]feedback <feedback here>\nReturn: sends feedback about the bot to the developers of the bot.")
 		return;
 	}
+	message.channel.send("If you want to view a specific command, type ``]help <command>``")
 	break;
 
         case "ping":
