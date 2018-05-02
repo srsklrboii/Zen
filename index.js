@@ -180,26 +180,33 @@ bot.on('message', async function(message) {
     var args = message.content.substring(prefix.length).split(" ")
     switch (args[0].toLowerCase()) {
         case "help":
-	message.channel.send(`Commands are in your DM's, ${message.author}!`)
-        var embed = new Discord.RichEmbed()
-            .setAuthor("Available Commands")
-            .addField("Normal Commands", "]help, ]ping, ]pong, ]cookie, ]say <whatever here>, ]noticeme")
-            .addField("Info Commands", "]userinfo <optional user>, ]serverinfo, ]getavatar <optional user>")
-            .addField("8ball Commands", "]8ball <question here>")
-            .addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
-            .addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
-            .addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
-            .addField("Fun Music Commands", "]nootnoot, ]imgay")
-            .addField("Search Commands", "]search <search query here>")
-            .addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
-            .addField("Bot Commands", "]botinfo, ]feedback <feedback here>, ]invite, ]credits")
-            .addBlankField()
-            .addField("Please join our Discord server! It really helps us grow!", "https://discord.gg/9JTSAvH")
-            .setFooter(`Credits: created by ${owner}`)
-	    .setColor("RANDOM")
-        message.author.send(embed).catch(e => {
-            message.channel.send("Woops! Looks like I can't send messages/embeds to you! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH")
-        })
+	if (!args[1]) {
+		message.channel.send(`Commands are in your DM's, ${message.author}!`)
+        	var embed = new Discord.RichEmbed()
+            		.setAuthor("Available Commands")
+            		.addField("Normal Commands", "]help, ]ping, ]pong, ]cookie, ]say <whatever here>, ]noticeme")
+            		.addField("Info Commands", "]userinfo <optional user>, ]serverinfo, ]getavatar <optional user>")
+            		.addField("8ball Commands", "]8ball <question here>")
+            		.addField("Rolling Dice", "]6sided, ]8sided, ]10sided")
+            		.addField("Rating Commands", "]gayrate <optional user>, ]lesbianrate <optional user>, ]straightrate <optional user>, ]bisexualrate <optional user>, ]dankrate <optional user>, ]waifurate <optional user>")
+            		.addField("Fun Commands", "]punch <user>, ]stab <user>, ]shoot <user>, ]roast <user>, ]bomb <user>, ]annihilate <user>, ]rps <whatever here>, ]dog. ]bean")
+            		.addField("Fun Music Commands", "]nootnoot, ]imgay")
+            		.addField("Search Commands", "]search <search query here>")
+            		.addField("Moderation Commands", "]kick <user> <reason>, ]ban <user> <reason>, ]purge <number between 1 and 100>, ]mute <user>, ]unmute <user>")
+            		.addField("Bot Commands", "]botinfo, ]feedback <feedback here>, ]invite, ]credits")
+            		.addBlankField()
+            		.addField("Please join our Discord server! It really helps us grow!", "https://discord.gg/9JTSAvH")
+            		.setFooter(`Credits: created by ${owner}`)
+	    		.setColor("RANDOM")
+        	message.author.send(embed).catch(e => {
+            		message.channel.send("Woops! Looks like I can't send messages/embeds to you! Join our Discord if this issue is persisting: https://discord.gg/9JTSAvH")
+        	})
+		return;
+	}
+	if ("ping".includes(args[1])) {
+		message.channel.send("Command Name: ]ping\nUsage: ]ping\nReturns: a really specific ping.")
+		return;
+	}
 	break;
 
         case "ping":
