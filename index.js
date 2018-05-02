@@ -209,6 +209,7 @@ bot.on('message', async function(message) {
 	}
 	if ("pong".includes(args[1])) {
 		message.channel.send("Command Name: pong\nUsage: ]pong\nReturn: what would you expect?")
+		return;
 	}
 	if ("cookie".includes(args[1])) {
 	    message.channel.send("Command name: cookie\nUsage: ]cookie\nReturn: a cookie.")
