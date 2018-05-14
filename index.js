@@ -1,11 +1,11 @@
 /*
-    Zen Discord bot created by <₳₴₱Ɇ₵₮> [Ɏ₮] ł₵ØĐɆⱫⱫ ₵Ø₥₥Ʉ₦ł₮Ɏ#5784
+    Zen Discord bot created by srsklrboii#5784
     This bot was entirely rewritten on Friday the 6th of April, 2018
-    Don't fork or skid any of the commands, or you will be exposed.
+    Don't fork or skid any of the commands please, i worked so hard on this bot ;-;
 */
 const Discord = require("discord.js")
 const prefix = "]"
-const owner = "<₳₴₱Ɇ₵₮> [Ɏ₮] ł₵ØĐɆⱫⱫ ₵Ø₥₥Ʉ₦ł₮Ɏ#5784"
+const owner = "srsklrboii#5784"
 const ytdl = require("ytdl-core")
 const encode = require("strict-uri-encode")
 const superagent = require("superagent")
