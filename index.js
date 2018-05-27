@@ -754,6 +754,7 @@ bot.on('message', async function(message) {
             .addField("Name", bot.user.username)
             .addField("Discriminator", bot.user.discriminator)
             .addField("ID", bot.user.id)
+	    .addField("Server Count", bot.guilds.size)
             .setThumbnail(bot.user.avatarURL)
             .setFooter(`Credits: created by ${owner}`)
             .setColor("RANDOM")
