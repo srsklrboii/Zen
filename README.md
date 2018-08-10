@@ -1,2 +1,2 @@
 # Zen
-The new version of CoolBot for Discord.
+A peaceful bot to have in your Discord server. Currently undergoing a rewrite.
